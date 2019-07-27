@@ -1,0 +1,22 @@
+select * from recepty
+
+select Imie_pracownik, nazwisko_pracownik from pracownicy where miasto_pracownik='Wroc³aw';
+
+select imie_lekarz, nazwisko_lekarz, adres_lekarz, telefon_lekarz from lekarze where nazwisko_lekarz='Kruszewski'
+
+select nr_recepty, Data from recepty where dawkowanie_recepta='1x dziennie'
+
+select imie_pacjent, nazwisko_pacjent, adres_pacjent, miasto_pacjent from pacjenci where nazwisko_pacjent='¯ak'
+
+select imie_pacjent, nazwisko_pacjent, adres_pacjent, miasto_pacjent from pacjenci where miasto_pacjent='Wroc³aw'
+
+select * from lekarze where miasto_lekarz='Poznañ'
+
+select imie_pracownik, nazwisko_pracownik, adres_pracownik, miasto_pracownik, telefon_pracownik from pracownicy where stanowisko='kierownik'
+
+select imie_pracownik, nazwisko_pracownik, adres_pracownik, miasto_pracownik, telefon_pracownik from pracownicy where miasto_pracownik='Wroc³aw'
+
+select imie_admin, nazwisko_admin from admin where nazwisko_admin='Paœnik' or nazwisko_admin='Pieczarka'
+
+
+select pacjenci.pesel_pacjent, pracownicy.pesel_pracownik, pracownicy.nazwisko_pracownik, apteki.adres_apteki, recepty.nr_recepty, recepty.data from pacjenci,pracownicy,apteki,recepty,lekarze where Lekarze.Id_lekarze=recepty.Id_lekarze

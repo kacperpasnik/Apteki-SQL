@@ -1,0 +1,79 @@
+insert into pacjenci values ('1','Adrianna','¯ak','Ul. ¯eromskiego 65/5','Warszawa','98101020022','678123432','true');
+
+insert into pacjenci values ('2','Anna','¯ak','Ul. ¯eromskiego 65/5','Warszawa','97011510125','678123433','true');
+
+insert into pacjenci values ('3','Stefan','Siarzewski','Al. Pracy 4/5','Wroc³aw','69062356100','888432777','false');
+
+insert into pacjenci values ('4','Alan','Wyszyñski','Ul. KuŸnicza 6/1','Wroc³aw','94022867843','880432999','false');
+
+insert into pacjenci values ('5','W³odzimierz','Kowalczyk','Ul. Bursztynowa 6a','Legnica','99032098843','726125593','true');
+
+insert into lekarze values ('1','Magdalena','Januszewska','Ul. Holenderska 10b','£ódŸ','75113010055',NULL);
+
+insert into lekarze values ('2','Waldemar','Kruszewski','Ul. Zielarska 33/2','Legnice','74103010565','666777888');
+
+insert into lekarze values ('3','£ukasz','Kruszewski','Ul. M³ynarska 22/5','Wroc³aw','73122319965','678432334');
+
+insert into lekarze values ('4','Anna','Pokurcz','Ul. Wiêzienna 45/31','Warszawa','80080822234','786549001');
+
+insert into lekarze values ('5','Monika','Poloczewska','Al. Piastów 38/9','Poznañ','69042810098','762340001');
+
+insert into producenci values ('1','GSK');
+
+insert into producenci values ('2','DMG');
+
+insert into producenci values ('3','Hasco-lek');
+
+insert into producenci values ('4','Lekopol');
+
+insert into producenci values ('5','Medicinex');
+
+insert into apteki values ('1','Ul. Grabskiego 2');
+
+insert into apteki values ('2','Pl. Orl¹t lwowskich 10');
+
+insert into apteki values ('3','Ul. Powstañców Œl¹skich 3');
+
+insert into apteki values ('4','Ul. Dworcowa 20');
+
+insert into apteki values ('5','Ul. Grabiszyñska 110');
+
+insert into pracownicy values ('1',(select Id_admin from admin where imie_admin='Karol' and nazwisko_admin= 'Kondracki'),'Karol','Kondracki','Ul. Darczyñska 78/90','89090940040','Wroc³aw','666091873','Kierownik');
+
+insert into pracownicy values ('2',(select Id_admin from admin where imie_admin='Marcin' and nazwisko_admin= 'Wydra'),'Marcin','Wydra','Ul. Duñska 12/34','95020112343','Wroc³aw','669812054','NULL');
+
+insert into pracownicy values ('3',(select Id_admin from admin where imie_admin='Andrzej' and nazwisko_admin= 'Polak'),'Andrzej','Polak','Ul. Legnicka 4/44','95020698013','Wroc³aw','726548019','NULL');
+
+insert into pracownicy values ('4',(select Id_admin from admin where imie_admin='W³odzimierz' and nazwisko_admin= 'D³ugosz'),'W³odzimierz','D³ugosz','Ul. G³ówna 5/1','71033011199','K¹ty Wroc³awskie','888001343','Kierownik');
+
+insert into pracownicy values ('5',(select Id_admin from admin where imie_admin='Edyta' and nazwisko_admin= 'Górniakowska'),'Edyta','Górniakowska','Ul. Jana Paw³a II 126/10','80091010051','Wroc³aw','0','NULL');
+
+insert into admin values ('1',(select Id_pracownicy from pracownicy where imie_pracownik='Karol' and nazwisko_pracownik='Kondracki'),'Karol','Kondracki');
+
+insert into admin values ('2',(select Id_pracownicy from pracownicy where imie_pracownik='Kacper' and nazwisko_pracownik='Paœnik'),'Kacper','Paœnik');
+
+insert into admin values ('3',(select Id_pracownicy from pracownicy where imie_pracownik='Krzysztof' and nazwisko_pracownik='Pieczarka'),'Krzysztof','Pieczarka');
+
+insert into admin values ('4',(select Id_pracownicy from pracownicy where imie_pracownik='W³odzimierz' and nazwisko_pracownik='D³ugosz'),'W³odzimierz','D³ugosz');
+
+insert into admin values ('5',(select Id_pracownicy from pracownicy where imie_pracownik='Jan' and nazwisko_pracownik='Kowalski'),'Jan','Kowalski');
+
+insert into recepty values ('1',(select Id_pacjenci from pacjenci where pesel_pacjent='98101020022'),(select Id_lekarze from lekarze where pesel_lekarz='75113010055'),(select Id_pracownicy from pracownicy where pesel_pracownik='71033011199'),(select Id_apteki from apteki where adres_apteki='Ul. Grabiszyñska 110'),'200000001','2018-12-12','2x dziennie')
+
+insert into recepty values ('2',(select Id_pacjenci from pacjenci where pesel_pacjent='69062356100'),(select Id_lekarze from lekarze where pesel_lekarz='75113010055'),(select Id_pracownicy from pracownicy where pesel_pracownik='71033011199'),(select Id_apteki from apteki where adres_apteki='Ul. Grabiszyñska 110'),'200000002','2017-12-12','3x dziennie')
+
+insert into recepty values ('3',(select Id_pacjenci from pacjenci where pesel_pacjent='94022867843'),(select Id_lekarze from lekarze where pesel_lekarz='74103010565'),(select Id_pracownicy from pracownicy where pesel_pracownik='89090940040'),(select Id_apteki from apteki where adres_apteki='Ul. Grabskiego 2'),'200000432','2019-01-12','1x dziennie')
+
+insert into recepty values ('4',(select Id_pacjenci from pacjenci where pesel_pacjent='99032098843'),(select Id_lekarze from lekarze where pesel_lekarz='69042810098'),(select Id_pracownicy from pracownicy where pesel_pracownik='80091010051'),(select Id_apteki from apteki where adres_apteki='Ul. Grabskiego 2'),'200000433','2019-01-01','1x tygodniowo')
+
+insert into recepty values ('5',(select Id_pacjenci from pacjenci where pesel_pacjent='99032098843'),(select Id_lekarze from lekarze where pesel_lekarz='69042810098'),(select Id_pracownicy from pracownicy where pesel_pracownik='95020698013'),(select Id_apteki from apteki where adres_apteki='Ul. Dworcowa 20'),'200000501','2018-11-01','1x dziennie')
+
+insert into leki values ('1',(select Id_producenci from producenci where Nazwa_producent='Lekopol'),(select Id_recepty from recepty where Nr_recepty='200000002'),'Cholinol','true','25.00','wg recepty')
+
+insert into leki values ('2',(select Id_producenci from producenci where Nazwa_producent='GSK'),(select Id_recepty from recepty where Nr_recepty='200000001'),'ACC','true','39.99','1x dziennie')
+
+insert into leki values ('3',(select Id_producenci from producenci where Nazwa_producent='Medicinex'),(select Id_recepty from recepty where Nr_recepty='0'),'Maœæ na plecy','false','19.89','3x dziennie lub czêœciej')
+
+insert into leki values ('4',(select Id_producenci from producenci where Nazwa_producent='Hasco-lek'),(select Id_recepty from recepty where Nr_recepty='0'),'Maœæ na wszystko','false','109.99','1x tygodniowo')
+
+insert into leki values ('5',(select Id_producenci from producenci where Nazwa_producent='DMG'),(select Id_recepty from recepty where Nr_recepty='200000501'),'Amul','true','20.50','wg recepty')
